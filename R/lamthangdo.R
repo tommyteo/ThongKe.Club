@@ -9,16 +9,17 @@ lamthangdo <- function(obs,m,n,p,sig){
   nhoj <-LETTERS[1:m]
   nhoi <- c(1:n)
 
-for (j in nhoj) {
-doi <- replace( a,rbinom(obs,1,p)==1,tt)
-assign(paste0(j), doi ) ->tam
+  for (j in nhoj) {
+    doi <- replace( a,rbinom(obs,1,p)==1,tt)
+    assign(paste0(j), doi ) ->tam
     for (i in nhoi){
-    chuan <-replace( tam ,rbinom(obs,1,1-sig)==1,tt) 
-    chuan <-data.frame(chuan)
-    colnames(chuan) <- paste0(j,i)
-    dlieu10 <- cbind(dlieu10,chuan)
-    dlieu10 <-data.frame(dlieu10)
+      chuan <-replace( tam ,rbinom(obs,1,1-sig)==1,tt)
+      chuan <-data.frame(chuan)
+      colnames(chuan) <- paste0(j,i)
+      dlieu10 <- cbind(dlieu10,chuan)
+      dlieu10 <-data.frame(dlieu10)
     }
-   }
+  }
   return(dlieu10)
 }
+
